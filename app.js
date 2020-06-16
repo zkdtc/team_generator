@@ -1,6 +1,9 @@
 var inquirer = require("inquirer");
 
 var fs = require('fs');
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 enterNew();
 var data_all=[];
@@ -65,8 +68,9 @@ function enterManager() {
           }
 
     ]).then(async (data) =>{
+        const m=new Manager(data.name, data.id,data.email,data.office);
+        console.log(m.getEmail());
         data_all.push(data);
-        console.log(data_all);
         if (data.askAgain){
             enterNew();
         }
