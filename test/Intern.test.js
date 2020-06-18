@@ -1,70 +1,19 @@
 const Intern = require("../lib/Intern");
 
-describe("Intern", () => {
-  describe("getName", () => {
-    it("should return the name of the intern", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const school='UC Berkeley'
-      
-      const result = new Intern(name,id,email,school).getName();
+test("Can set school via constructor", () => {
+  const testValue = "UCLA";
+  const e = new Intern("Foo", 1, "test@test.com", testValue);
+  expect(e.school).toBe(testValue);
+});
 
-      expect(result).toEqual(name);
-    });
-  });
+test("getRole() should return \"Intern\"", () => {
+  const testValue = "Intern";
+  const e = new Intern("Foo", 1, "test@test.com", "UCLA");
+  expect(e.getRole()).toBe(testValue);
+});
 
-  describe("getID", () => {
-    it("should return the name of the intern", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com';
-      const school='UC Berkeley';
-      
-      const result = new Intern(name,id,email,school).getID();
-
-      expect(result).toEqual(id);
-    });
-  });
-
-  describe("getEmail", () => {
-    it("should return the email of the intern", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const school='UC Berkeley'
-      
-      const result = new Intern(name,id,email,school).getEmail();
-
-      expect(result).toEqual(email);
-    });
-  });
-
-  describe("getRole", () => {
-    it("should return the role of the intern", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const school='UC Berkeley'
-      
-      const result = new Intern(name,id,email,school).getRole();
-
-      expect(result).toEqual('Intern');
-    });
-  });
-
-  describe("getSchool", () => {
-    it("should return the school of the Intern", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const school='UC Berkeley'
-      
-      const result = new Intern(name,id,email,school).getSchool();
-
-      expect(result).toEqual(school);
-    });
-  });
-
-
+test("Can get school via getSchool()", () => {
+  const testValue = "UCLA";
+  const e = new Intern("Foo", 1, "test@test.com", testValue);
+  expect(e.getSchool()).toBe(testValue);
 });

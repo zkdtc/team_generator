@@ -1,70 +1,19 @@
 const Engineer = require("../lib/Engineer");
 
-describe("Engineer", () => {
-  describe("getName", () => {
-    it("should return the name of the engineer", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const github='test'
-      
-      const result = new Engineer(name,id,email,github).getName();
+test("Can set GitHUb account via constructor", () => {
+  const testValue = "GitHubUser";
+  const e = new Engineer("Foo", 1, "test@test.com", testValue);
+  expect(e.github).toBe(testValue);
+});
 
-      expect(result).toEqual(name);
-    });
-  });
+test("getRole() should return \"Engineer\"", () => {
+  const testValue = "Engineer";
+  const e = new Engineer("Foo", 1, "test@test.com", "GitHubUser");
+  expect(e.getRole()).toBe(testValue);
+});
 
-  describe("getID", () => {
-    it("should return the name of the engineer", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const github='test'
-      
-      const result = new Engineer(name,id,email,github).getID();
-
-      expect(result).toEqual(id);
-    });
-  });
-
-  describe("getEmail", () => {
-    it("should return the email of the engineer", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const github='test'
-      
-      const result = new Engineer(name,id,email,github).getEmail();
-
-      expect(result).toEqual(email);
-    });
-  });
-
-  describe("getRole", () => {
-    it("should return the roleof the engineer", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const github='test'
-      
-      const result = new Engineer(name,id,email,github).getRole();
-
-      expect(result).toEqual('Engineer');
-    });
-  });
-
-  describe("getGithub", () => {
-    it("should return the github username of the engineer", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const github='test'
-      
-      const result = new Engineer(name,id,email,github).getGithub();
-
-      expect(result).toEqual(github);
-    });
-  });
-
-
+test("Can get GitHub username via getGithub()", () => {
+  const testValue = "GitHubUser";
+  const e = new Engineer("Foo", 1, "test@test.com", testValue);
+  expect(e.getGithub()).toBe(testValue);
 });

@@ -1,69 +1,20 @@
 const Manager = require("../lib/Manager");
+const Employee = require("../lib/Employee");
 
-describe("Manager", () => {
-  describe("getName", () => {
-    it("should return the name of the Manager", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const office='206'
-      
-      const result = new Manager(name,id,email,office).getName();
+test("Can set office number via constructor argument", () => {
+  const testValue = 100;
+  const e = new Manager("Foo", 1, "test@test.com", testValue);
+  expect(e.officeNumber).toBe(testValue);
+});
 
-      expect(result).toEqual(name);
-    });
-  });
+test('getRole() should return "Manager"', () => {
+  const testValue = "Manager";
+  const e = new Manager("Foo", 1, "test@test.com", 100);
+  expect(e.getRole()).toBe(testValue);
+});
 
-  describe("getID", () => {
-    it("should return the name of the manager", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com';
-      const office='206'
-      
-      const result = new Manager(name,id,email,office).getID();
-
-      expect(result).toEqual(id);
-    });
-  });
-
-  describe("getEmail", () => {
-    it("should return the email of the manager", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const office='206'
-      
-      const result = new Manager(name,id,email,office).getEmail();
-      expect(result).toEqual(email);
-    });
-  });
-
-  describe("getRole", () => {
-    it("should return the role of the intern", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const office='206'
-      
-      const result = new Manager(name,id,email,office).getRole();
-
-      expect(result).toEqual('Manager');
-    });
-  });
-
-  describe("getOffice", () => {
-    it("should return the office number of the manager", () => {
-      const name = "Alexa";
-      const id='1';
-      const email='test@gmail.com'
-      const office='206'
-      
-      const result = new Manager(name,id,email,office).getOffice();
-
-      expect(result).toEqual(office);
-    });
-  });
-
-
+test("Can get office number via getOffice()", () => {
+  const testValue = 100;
+  const e = new Manager("Foo", 1, "test@test.com", testValue);
+  expect(e.getOfficeNumber()).toBe(testValue);
 });

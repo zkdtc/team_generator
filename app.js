@@ -5,6 +5,14 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
+
+const path = require("path");
+
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
+
+const render = require("./lib/htmlRenderer");
+
 enterNew();
 var data_all=[];
 
@@ -68,11 +76,18 @@ function enterManager() {
           }
 
     ]).then(async (data) =>{
-        const m=new Manager(data.name, data.id,data.email,data.office);
-        console.log(m.getEmail());
-        data_all.push(data);
+        const e=new Manager(data.name, data.id,data.email,data.office);
+        data_all.push(e);
         if (data.askAgain){
             enterNew();
+        }
+        else{
+            
+            const output=render(data_all);
+            fs.writeFile(outputPath,output,function (err) {
+                if (err) return console.log(err);
+                console.log('Render '+outputPath);
+              });
         }
         
     })
@@ -110,10 +125,17 @@ function enterEngineer() {
           }
 
     ]).then(async (data) => {
-        data_all.push(data);
-        console.log(data_all);
+        const e=new Engineer(data.name, data.id,data.email,data.githubusername);
+        data_all.push(e);
         if (data.askAgain){
             enterNew();
+        }
+        else{
+            const output=render(data_all);
+            fs.writeFile(outputPath,output,function (err) {
+                if (err) return console.log(err);
+                console.log('Render '+outputPath);
+              });
         }
     })
 }
@@ -149,10 +171,17 @@ function enterIntern() {
           }
 
     ]).then(async (data) => {
-        data_all.push(data);
-        console.log(data_all);
+        const e=new Intern(data.name, data.id,data.email,data.school);
+        data_all.push(e);
         if (data.askAgain){
             enterNew();
+        }
+        else{
+            const output=render(data_all);
+            fs.writeFile(outputPath,output,function (err) {
+                if (err) return console.log(err);
+                console.log('Render '+outputPath);
+              });
         }
     })
 }
